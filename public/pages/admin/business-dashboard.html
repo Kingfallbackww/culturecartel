@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Dashboard</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        /* Structure the page layout */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .dashboard-container {
+            flex: 1;
+            padding: 20px;
+        }
+
+        /* Previous styles remain the same */
+        .business-name-input {
+            margin-bottom: 20px;
+            padding: 8px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 5px;
+        }
+
+        /* Style for the new business link in nav */
+        .new-business-link {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            margin-left: 10px;
+            text-decoration: none;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Button Container Styling */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        /* Button Styling */
+        .button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            width: 150px; /* Set a fixed width for both buttons */
+        }
+
+        .save-button {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .save-button:hover {
+            background-color: #0056b3;
+        }
+
+        .add-product-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .add-product-btn:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #f1f1f1;
+            padding: 10px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        /* Product Grid Styling */
+        .product-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .product-placeholder {
+            background-color: #f3f3f3;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .product-placeholder button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .product-details {
+            margin-top: 60px; /* Add space for the button */
+            text-align: left;
+        }
+
+        .image-preview {
+            max-width: 100%;
+            max-height: 150px;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urban Nest</h1>
+        <div class="auth-links">
+            <a href="../../pages/auth/login.html">Login</a>
+            <a href="../../pages/auth/register.html">Register</a>
+        </div>
+    </header>
+
+    <nav>
+        <a href="../../index.html" class="home-button">
+            <img src="../../assets/icons/homeicon2.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+        <div class="dropdown">
+            <a href="#">SHOP</a>
+            <div class="dropdown-content">
+                <a href="#">New</a>
+                <a href="#">Featured</a>
+                <a href="#">Best Sellers</a>
+                <a href="../../pages/shop/mens.html">Men</a>
+                <a href="#">Women</a>
+                <a href="#">T-shirts</a>
+                <a href="#">Pants</a>
+                <a href="#">Hoodies</a>
+                <a href="#">Accessories</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">BRANDS</a>
+            <div id="brand-dropdown" class="dropdown-content">
+                <a href="../../pages/brands/fifth-of-junes.html">Fifth of Junes</a>
+                <a href="../../pages/brands/4orty.html">4orty</a>
+                <a href="../../pages/brands/ovo.html">OVO</a>
+                <a href="../../pages/brands/nocta.html">Nocta</a>
+                <a href="../../pages/brands/maison-margiela.html">Maison Margiela</a>
+            </div>
+        </div>
+        <a href="#">CONTACT</a>
+        <a href="../../pages/shop/cart.html">CART</a>
+        <a href="../../pages/shop/checkout.html">CHECKOUT</a>
+        <a href="../../pages/photographers/photographers.html">Photographers</a>
+    </nav>
+
+    <main class="dashboard-container">
+        <!-- Business Name Input -->
+        <div class="input-container">
+            <input type="text" id="business-name" class="business-name-input" placeholder="Enter Business Name" required>
+            <div id="error-message" class="error-message">Please enter a business name</div>
+        </div>
+
+        <!-- Button Container -->
+        <div class="button-container">
+            <button class="button save-button" onclick="saveBusiness()">Save Business</button>
+            <button class="button add-product-btn" onclick="addProduct()">Add Product</button>
+        </div>
+
+        <section class="product-grid" id="product-grid">
+            <!-- Product placeholders will be added here dynamically -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Local Clothing Brands. All rights reserved.</p>
+    </footer>
+
+    <script>
+        let productCount = 1;
+        let savedBusinesses = [];
+
+        function addProduct() {
+            productCount++;
+            const productGrid = document.getElementById('product-grid');
+
+            const newProductPlaceholder = document.createElement('div');
+            newProductPlaceholder.classList.add('product-placeholder');
+            newProductPlaceholder.id = `product-placeholder-${productCount}`;
+
+            newProductPlaceholder.innerHTML = `
+                <button class="add-product-btn" onclick="document.getElementById('file-input-${productCount}').click()">+</button>
+                <input type="file" id="file-input-${productCount}" accept="image/*" style="display: none;" onchange="previewImage(event, 'image-preview-${productCount}')">
+                <img id="image-preview-${productCount}" class="image-preview" src="" alt="Image Preview" style="display: none;">
+                <div class="product-details">
+                    <label for="category-select-${productCount}">Category:</label>
+                    <select id="category-select-${productCount}" class="category-select">
+                        <option value="mens">Men</option>
+                        <option value="womens">Women</option>
+                        <option value="tshirts">T-shirts</option>
+                        <option value="pants">Pants</option>
+                        <option value="hoodies">Hoodies</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                    <label for="sizes-available-${productCount}">Sizes Available:</label>
+                    <select id="sizes-available-${productCount}">
+                        <option value="XS">XS</option>
+                        <option value="S">S</option>
+                        <option value="M">M</option>
+                        <option value="L">L</option>
+                        <option value="XL">XL</option>
+                        <option value="XXL">XXL</option>
+                    </select>
+                </div>
+            `;
+
+            productGrid.appendChild(newProductPlaceholder);
+        }
+
+        function previewImage(event, imageId) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = document.getElementById(imageId);
+                img.src = e.target.result;
+                img.style.display = 'block';
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveBusiness() {
+            const businessNameInput = document.getElementById('business-name');
+            const businessName = businessNameInput.value.trim();
+            const errorMessage = document.getElementById('error-message');
+            
+            if (!businessName) {
+                errorMessage.style.display = 'block';
+                return;
+            }
+            
+            errorMessage.style.display = 'none';
+            
+            const businessSlug = businessName.toLowerCase().replace(/\s+/g, '-');
+            
+            if (!savedBusinesses.includes(businessName)) {
+                savedBusinesses.push(businessName);
+                
+                const brandDropdown = document.getElementById('brand-dropdown');
+                const newBusinessLink = document.createElement('a');
+                newBusinessLink.href = `${businessSlug}.html`;
+                newBusinessLink.textContent = businessName;
+                newBusinessLink.classList.add('new-business-link');
+                brandDropdown.appendChild(newBusinessLink);
+                
+                const products = [];
+                const productPlaceholders = document.querySelectorAll('.product-placeholder');
+                productPlaceholders.forEach(placeholder => {
+                    const category = placeholder.querySelector('.category-select').value;
+                    const sizes = placeholder.querySelector('select[id^="sizes-available"]').value;
+                    const imagePreview = placeholder.querySelector('.image-preview').src;
+                    
+                    products.push({
+                        category,
+                        sizes,
+                        image: imagePreview
+                    });
+                });
+
+                const businessData = {
+                    name: businessName,
+                    slug: businessSlug,
+                    products: products
+                };
+                
+                console.log('Saved business data:', businessData);
+                alert(`Business "${businessName}" has been saved successfully!`);
+            } else {
+                alert('This business name has already been saved!');
+            }
+        }
+    </script>
+</body>
+</html>

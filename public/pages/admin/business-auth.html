@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Admin Authentication</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color:beige;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Header styling */
+        header {
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        .auth-links a {
+            color: #fff;
+            margin-left: 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .auth-links a:hover {
+            color: #ff6347; /* Tomato color */
+        }
+
+        /* Navigation styling */
+        nav {
+            width: 100%;
+            background-color: beige;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a {
+            color: black;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: beige;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:beiges;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            min-width: 160px;
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            display: block;
+            text-decoration: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        /* Authentication Container */
+        .auth-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            color: #444;
+        }
+
+        input[type="password"] {
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        button[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #ff6347;
+        }
+
+        /* Error message styling */
+        .error-message {
+            color: #ff6347;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <h1>Urban Nest</h1>
+        <div class="auth-links">
+            <a href="../../pages/auth/login.html">Login</a>
+            <a href="../../pages/auth/register.html">Register</a>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="../../index.html" class="home-button">
+            <img src="../../assets/icons/homeicon2.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+        <div class="dropdown">
+            <a href="#">SHOP</a>
+            <div class="dropdown-content">
+                <a href="#">New</a>
+                <a href="#">Featured</a>
+                <a href="#">Best Sellers</a>
+                <a href="../../pages/shop/mens.html">Men</a>
+                <a href="#">Women</a>
+                <a href="#">T-shirts</a>
+                <a href="#">Pants</a>
+                <a href="#">Hoodies</a>
+                <a href="#">Accessories</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">BRANDS</a>
+            <div id="brand-dropdown" class="dropdown-content">
+                <a href="../../pages/brands/fifth-of-junes.html">Fifth of Junes</a>
+                <a href="../../pages/brands/4orty.html">4orty</a>
+                <a href="../../pages/brands/ovo.html">OVO</a>
+                <a href="../../pages/brands/nocta.html">Nocta</a>
+                <a href="../../pages/brands/maison-margiela.html">Maison Margiela</a>
+            </div>
+        </div>
+        <a href="#">CONTACT</a>
+        <a href="../../pages/shop/cart.html">CART</a>
+        <a href="../../pages/shop/checkout.html">CHECKOUT</a>
+        <a href="../../pages/photographers/photographers.html">Photographers</a>
+    </nav>
+
+    <!-- Main Authentication Section -->
+    <main>
+        <div class="auth-container">
+            <form id="admin-auth-form">
+                <label for="admin-password">Enter Admin Password:</label>
+                <input type="password" id="admin-password" name="password" required>
+                <button type="submit">Submit</button>
+                <p id="error-message" class="error-message"></p>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        // Admin password check
+        document.getElementById('admin-auth-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const adminPassword = document.getElementById('admin-password').value;
+            const correctPassword = "Topsybling1#"; // Set this to your chosen password
+            const errorMessage = document.getElementById('error-message');
+
+            if (adminPassword === correctPassword) {
+                // Redirect to the business admin dashboard
+                window.location.href = "businessadmindash.html";
+            } else {
+                errorMessage.textContent = "Incorrect password. Please try again.";
+            }
+        });
+    </script>
+</body>
+</html>

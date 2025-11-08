@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar Styling */
+        nav {
+            background-color: beige;
+            padding: 15px;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: beige;
+        }
+
+        /* Header Styling (Urban Nest Logo) */
+        .site-name {
+            font-size: 3rem;
+            text-align: center;
+            font-weight: bold;
+            color: #007bff;
+            margin: 20px 0;
+            background-color: #333;
+        }
+
+        .site-name span {
+            font-family: 'Calibri';
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        /* Register Form Container */
+        .register-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color:white;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, input[type="url"]:focus, input[type="number"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-container button {
+            width: 48%;
+            padding: 12px;
+            font-size: 1rem;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-container button:hover {
+            opacity: 0.9;
+        }
+
+        .register-btn {
+            background-color: #007bff;
+        }
+
+        .login-btn {
+            background-color: #6c757d;
+        }
+
+        .terms {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .terms a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hidden Fields */
+        #business-fields, #photographer-fields {
+            display: none;
+        }
+
+        /* Radio Buttons Styling */
+        .registration-type-container {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .registration-type-container label {
+            font-weight: normal;
+            font-size: 1rem;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        /* Responsive Styling */
+        @media screen and (max-width: 600px) {
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn-container button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urban Nest</h1>
+        <div class="auth-links">
+            <a href="../../pages/auth/login.html">Login</a>
+            <a href="../../pages/auth/register.html">Register</a>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="../../index.html" class="home-button">
+            <img src="../../assets/icons/homeicon2.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+        
+        <div class="dropdown">
+            <a href="#">SHOP</a>
+            <div class="dropdown-content">
+                <a href="#">New</a>
+                <a href="#">Featured</a>
+                <a href="#">Best Sellers</a>
+                <a href="../../pages/shop/mens.html">Men</a>
+                <a href="#">Women</a>
+                <a href="#">T-shirts</a>
+                <a href="#">Pants</a>
+                <a href="#">Hoodies</a>
+                <a href="#">Accessories</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">BRANDS</a>
+            <div id="brand-dropdown" class="dropdown-content">
+                <a href="../../pages/brands/fifth-of-junes.html">Fifth of Junes</a>
+                <a href="../../pages/brands/4orty.html">4orty</a>
+                <a href="../../pages/brands/ovo.html">OVO</a>
+                <a href="../../pages/brands/nocta.html">Nocta</a>
+                <a href="../../pages/brands/maison-margiela.html">Maison Margiela</a>
+            </div>
+        </div>
+        <a href="#">CONTACT</a>
+        <a href="../../pages/shop/cart.html">CART</a>
+        <a href="../../pages/shop/checkout.html">CHECKOUT</a>
+        <!-- Added Photographers Link -->
+        <div class="dropdown">
+            <a href="../../pages/photographers/photographers.html">Photographers</a>
+            <div id="photographers" class="dropdown-content">
+                <a href="../../pages/photographers/reece-orji.html">Reece Orji</a>
+            </div>
+        </div>
+        <a href="../../pages/admin/admin-auth.html">Admin</a> <!-- Link to admin authentication page -->
+        <a href="../../pages/admin/business-auth.html">Business Admin</a> <!-- Link to admin authentication page -->
+
+    </nav>
+    
+
+    <div class="register-container">
+        <h1>Create Account</h1>
+        <form id="register-form">
+            <!-- Username Field -->
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <!-- Email Field -->
+            <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <!-- Password Field -->
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <!-- Confirm Password Field -->
+            <div>
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            
+            <!-- Registration Type Options (User, Business, Photographer) -->
+            <div class="registration-type-container">
+                <label><input type="radio" name="registration-type" value="user" checked> User</label>
+                <label><input type="radio" name="registration-type" value="business"> Business</label>
+                <label><input type="radio" name="registration-type" value="photographer"> Photographer</label>
+            </div>
+        
+            <!-- Business-specific Fields (Displayed only if Business is selected) -->
+            <div id="business-fields">
+                <div>
+                    <label for="business-name">Business Name</label>
+                    <input type="text" id="business-name" name="business-name">
+                </div>
+                <div>
+                    <label for="business-address">Business Address</label>
+                    <input type="text" id="business-address" name="business-address">
+                </div>
+            </div>
+        
+            <!-- Photographer-specific Fields (Displayed only if Photographer is selected) -->
+            <div id="photographer-fields">
+                <div>
+                    <label for="portfolio-link">Portfolio Link</label>
+                    <input type="url" id="portfolio-link" name="portfolio-link">
+                </div>
+                <div>
+                    <label for="experience">Years of Experience</label>
+                    <input type="number" id="experience" name="experience" min="0">
+                </div>
+            </div>
+
+            <!-- Security Question and Answer Fields -->
+            <div>
+                <label for="security-question">Security Question</label>
+                <input type="text" id="security-question" name="security-question" placeholder="e.g., Your pet's name?" required>
+            </div>
+            <div>
+                <label for="security-answer">Security Answer</label>
+                <input type="text" id="security-answer" name="security-answer" required>
+            </div>
+
+            <!-- Error Message Display -->
+            <div class="error-message" id="error-message"></div>
+            
+            <!-- Terms & Conditions -->
+            <div class="terms">
+                <p>By creating an account, you agree to our <a href="#">Terms & Conditions</a></p>
+            </div>
+        
+            <!-- Submit and Login Buttons -->
+            <div class="btn-container">
+                <button type="submit" class="register-btn">Register</button>
+                <button type="button" class="login-btn" onclick="window.location.href='login.html'">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Handle Registration Type Toggle
+        const registrationTypes = document.getElementsByName('registration-type');
+        const businessFields = document.getElementById('business-fields');
+        const photographerFields = document.getElementById('photographer-fields');
+
+        // Add event listeners to radio buttons to show/hide fields based on registration type
+        registrationTypes.forEach(type => {
+            type.addEventListener('change', function() {
+                if (this.value === 'business') {
+                    businessFields.style.display = 'block'; // Show business fields
+                    photographerFields.style.display = 'none'; // Hide photographer fields
+                } else if (this.value === 'photographer') {
+                    photographerFields.style.display = 'block'; // Show photographer fields
+                    businessFields.style.display = 'none'; // Hide business fields
+                } else {
+                    businessFields.style.display = 'none'; // Hide business fields
+                    photographerFields.style.display = 'none'; // Hide photographer fields
+                }
+            });
+        });
+
+        // Form Validation and Submission Logic
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form field values
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const securityQuestion = document.getElementById('security-question').value;
+            const securityAnswer = document.getElementById('security-answer').value;
+            const errorMessage = document.getElementById('error-message');
+
+            // Password validation: Minimum 8 characters, 1 uppercase letter, 1 number, and 1 special character
+            const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+
+            if (!passwordRegex.test(password)) {
+                errorMessage.textContent = 'Password must contain at least 1 uppercase letter, 1 number, 1 special character, and be at least 8 characters long.';
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'Passwords do not match.';
+                return;
+            }
+
+            // Simulating successful form submission (no real back-end interaction)
+            errorMessage.textContent = `${username} has been registered successfully! Redirecting...`;
+            setTimeout(() => {
+                window.location.href = 'login.html'; // Redirect to login page after successful registration
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

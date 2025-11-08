@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photographers</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+    
+        /* Container to align images in 3-column layout */
+        .gallery-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Exactly 3 images per row */
+            gap: 20px;
+            padding: 20px;
+        }
+    
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 10px solid #e6e6e6; /* Frame around each image */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Shadow for depth */
+            background-color: #fff;
+        }
+    
+        .gallery-item img {
+            display: block;
+            width: 100%; /* Make image fill the frame */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensures image fits frame without distortion */
+            transition: transform 0.3s;
+        }
+    
+        /* Slight zoom effect on hover */
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+    
+        /* Hover overlay styling */
+        .hover-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 10px;
+        }
+    
+        /* Show overlay on hover */
+        .gallery-item:hover .hover-overlay {
+            opacity: 1;
+        }
+    
+        .gallery-item-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+    
+        /* Header Styling */
+        .site-name {
+            font-size: 3rem;
+            text-align: center;
+            font-weight: bold;
+            color: #333;
+            margin: 20px 0;
+        }
+    
+        .site-name span {
+            font-family: 'Calibri';
+            font-size: 3.5rem;
+            color: #007bff;
+        }
+
+        h1 {
+            grid-column: span 3; /* Ensure the title spans across all columns */
+            text-align: center;
+            margin-bottom: 20px; /* Add some space below the title */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Urban Nest</h1>
+        <div class="auth-links">
+            <a href="../../pages/auth/login.html">Login</a>
+            <a href="../../pages/auth/register.html">Register</a>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="../../index.html" class="home-button">
+            <img src="../../assets/icons/homeicon2.png" alt="Home" style="width: 24px; height: 24px;">
+        </a>
+        
+        <div class="dropdown">
+            <a href="#">SHOP</a>
+            <div class="dropdown-content">
+                <a href="#">New</a>
+                <a href="#">Featured</a>
+                <a href="#">Best Sellers</a>
+                <a href="../../pages/shop/mens.html">Men</a>
+                <a href="#">Women</a>
+                <a href="#">T-shirts</a>
+                <a href="#">Pants</a>
+                <a href="#">Hoodies</a>
+                <a href="#">Accessories</a>
+            </div>
+        </div>
+        <div class="dropdown">
+            <a href="#">BRANDS</a>
+            <div id="brand-dropdown" class="dropdown-content">
+                <a href="fifth -of-junes.html">Fifth of Junes</a>
+                <a href="../../pages/brands/4orty.html">4orty</a>
+                <a href="../../pages/brands/ovo.html">OVO</a>
+                <a href="../../pages/brands/nocta.html">Nocta</a>
+                <a href="../../pages/brands/maison-margiela.html">Maison Margiela</a>
+            </div>
+        </div>
+        <a href="#">CONTACT</a>
+        <a href="../../pages/shop/cart.html">CART</a>
+        <a href="../../pages/shop/checkout.html">CHECKOUT</a>
+        <a href="../../pages/photographers/photographers.html">Photographers</a> <!-- Added Photographers Link -->
+    </nav>
+    
+    <div class="gallery-container">
+        <h1>Photographer Gallery</h1>
+
+        <!-- Example Images with Details (You should dynamically generate these) -->
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY1.jpg" alt="Uploaded Photo 1">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY2.jpg" alt="Uploaded Photo 2">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: Alice Johnson</div>
+                <p>Location: Grand Canyon, AZ</p>
+                <p>Date Taken: 2024-04-20</p>
+                <p>Model: Michael Brown</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY3.jpg" alt="Uploaded Photo 3">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: Emily Davis</div>
+                <p>Location: Eiffel Tower, Paris</p>
+                <p>Date Taken: 2024-06-10</p>
+                <p>Model: Sarah Lee</p>
+            </div>
+        </div>
+        <!-- Add more items dynamically here -->
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY4.jpg" alt="Uploaded Photo 4">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY5.jpg" alt="Uploaded Photo 5">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY6.jpg" alt="Uploaded Photo 6">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY7.jpg" alt="Uploaded Photo 7">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY8.jpg" alt="Uploaded Photo 8">
+            <div class="hover-overlay">
+                <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+        <div class="gallery-item">
+            <img src="../../assets/images/gallery/GALLERY9.jpg" alt="Uploaded Photo 9">
+            <div class="hover-overlay">
+            <div class="gallery-item-title">Photographer: John Doe</div>
+                <p>Location: Central Park, NY</p>
+                <p>Date Taken: 2024-05-15</p>
+                <p>Model: Jane Smith</p>
+            </div>
+        </div>
+       
+    </div>
+</body>
+</html> 
